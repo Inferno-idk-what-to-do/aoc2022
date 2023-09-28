@@ -81,7 +81,8 @@ fn main() {
     let part2_chunks = chunks(data, 3);
     let part2 = part2_chunks.iter()
                             .map(|chunk| common_between_lines(chunk.to_vec()))
-                            .map(|c| u32::from(value_of_char(c)))
-                            .sum::<u32>();
+                            .fold(0, |acc, c| {
+                                acc + u32::from(value_of_char(c)) 
+                            });
     println!("{}", part2);
 }
