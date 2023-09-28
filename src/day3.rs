@@ -71,8 +71,7 @@ fn chunks(lines: Vec<String>, chunk_size: usize) -> Vec<Vec<String>> {
 
 fn main() {
     let data = aoc_tools::read_lines::<String>("data/day3.txt").expect("couldn't read file");
-    let part1 = data
-                    .iter()
+    let part1 = data.iter()
                     .map(|l| common_between_halves(l.to_string()))
                     .fold(0, |acc, c| {
                         acc + u32::from(value_of_char(c))
