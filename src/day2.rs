@@ -107,9 +107,14 @@ fn convert_data(round: &Round) -> Round {
 
 fn main() {
     let data: Vec<Round> = aoc_tools::read_lines::<Round>("data/day2.txt").expect("couldn't read file");
-    let part1: u32 = data.iter().map(|r| score_round(r)).sum();
+    let part1: u32 = data.iter()
+                         .map(|r| score_round(r))
+                         .sum();
     println!("{:?}", part1);
 
-    let part2: u32 = data.iter().map(|r| convert_data(r)).map(|s| score_round(&s)).sum();
+    let part2: u32 = data.iter()
+                         .map(|r| convert_data(r))
+                         .map(|s| score_round(&s))
+                         .sum();
     println!("{:?}", part2);
 }
