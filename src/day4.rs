@@ -14,7 +14,17 @@ impl FromStr for Pair {
     type Err = ParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let assignments = s.split(',').map(|a| a.split('-').map(|b| b.parse::<u32>().unwrap()).collect::<Vec<u32>>()).collect::<Vec<Vec<u32>>>();
+        let assignments = s
+            .split(',')
+            .map(|a| 
+                a
+                    .split('-')
+                    .map(|b| 
+                        b
+                            .parse::<u32>()
+                            .unwrap())
+                    .collect::<Vec<u32>>())
+            .collect::<Vec<Vec<u32>>>();
         return Ok(Pair { first: (assignments[0][0]..=assignments[0][1]), second: (assignments[1][0]..=assignments[1][1]) });
     }
 }
